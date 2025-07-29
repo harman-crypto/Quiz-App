@@ -1,0 +1,90 @@
+import random
+
+quiz = [
+    {
+        "question": "What is the capital of France?",
+        "type": "mcq",
+        "options": ["A. Paris", "B. London", "C. Rome", "D. Berlin"],
+        "answer": "A"
+    },
+    {
+        "question": "What is 12 + 22?",
+        "type": "text",
+        "answer": "34"
+    },
+    {
+        "question": "Which planet is known as the Red Planet?",
+        "type": "mcq",
+        "options": ["A. Earth", "B. Mars", "C. Venus", "D. Jupiter"],
+        "answer": "B"
+    },
+    {
+        "question": "What color is the sky on a clear day?",
+        "type": "text",
+        "answer": "blue"
+    },
+    {
+        "question": "Who wrote 'Harry Potter'?",
+        "type": "text",
+        "answer": "jk rowling"
+    },
+    {
+        "question": "Which is the largest mammal?",
+        "type": "mcq",
+        "options": ["A. Elephant", "B. Blue Whale", "C. Giraffe", "D. Shark"],
+        "answer": "B"
+    },
+    {
+        "question": "How many days are there in a leap year?",
+        "type": "text",
+        "answer": "366"
+    },
+    {
+        "question": "Which gas do plants absorb?",
+        "type": "mcq",
+        "options": ["A. Oxygen", "B. Hydrogen", "C. Carbon Dioxide", "D. Nitrogen"],
+        "answer": "C"
+    },
+    {
+        "question": "Which continent is India in?",
+        "type": "text",
+        "answer": "asia"
+    },
+    {
+        "question": "How many hours are there in a day?",
+        "type": "text",
+        "answer": "24"
+    }
+]
+
+# 🔀 Shuffle the quiz questions
+random.shuffle(quiz)
+
+score = 0
+
+for q in quiz:
+    print("\n" + q["question"])
+
+    if q["type"] == "mcq":
+        for opt in q["options"]:
+            print(opt)
+        user_answer = input("Your answer (A/B/C/D): ").strip().upper()
+        correct = q["answer"].strip().upper()
+
+    else:  # text question
+        user_answer = input("Your answer: ").strip().lower()
+        correct = q["answer"].strip().lower()
+
+    if user_answer == correct:
+        print("✅ Correct!")
+        score += 1
+    else:
+        print(f"❌ Wrong! Correct answer is: {q['answer']}")
+
+# 🎯 Final Score
+print(f"\n🎯 Your Final Score: {score}/{len(quiz)}")
+
+if score > 5:
+    print("🎉 You are Passed!")
+else:
+    print("😞 Oops! You are Fail.")
